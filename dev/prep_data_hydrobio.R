@@ -22,7 +22,7 @@ departements_extra <- c("")  # Départements limitrophes avec stations en régie
 
 ## Creation d une liste code_stations qui contient le code station de toutes les stations dans la zone d'etude
 library(sf)
-points_qgis <- st_read("C:/Users/edgar.matter/Documents/STAGE/dataOutilValo/AEAP_AESN/StationsPerimetreUtile.shp")
+points_qgis <- st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydrobiologie/Donnees/Syntheses_et_valorisation/Outil_valorisation/AEAP_AESN/StationsPerimetreUtile.shp")
 code_stations <- unique(points_qgis$code_stati)
 
 # Import des suivis en régie et de la typologie nationale
