@@ -1,0 +1,10 @@
+name: hydrobiohdf_test
+title:
+username: valohdf
+account: valohdf
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14977949
+bundleId: 10509058
+url: https://valohdf.shinyapps.io/hydrobiohdf_test/
+version: 1

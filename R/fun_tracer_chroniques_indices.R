@@ -62,9 +62,6 @@ tracer_chroniques_indices <- function(DonneesGraphique, acronymes_indices, regie
   }
 
   retroconversion_eqr <- function(valeurs_eqr, code_indice, parametres_eqr_station) {
-    print(valeurs_eqr)
-    print(code_indice)
-    print(parametres_eqr_station)
     val <- valeurs_eqr
 
     if (code_indice == 5856) {

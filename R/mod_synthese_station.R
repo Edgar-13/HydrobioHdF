@@ -15,9 +15,7 @@
 mod_synthese_station_ui <- function(id){
   ns <- NS(id)
   tagList(
-    actionButton(ns("btn_afficher_fiche"), "Afficher fiche station"),
-    uiOutput(ns("loading_message")),
-    uiOutput(ns("synthese_station"))
+    uiOutput(ns("synthese_station")),
   )
 }
 
@@ -90,19 +88,19 @@ mod_synthese_station_server <- function(id, resumes_listes, stations, regie, ind
         output$synthese_station <- renderUI({
           req(choix_station, choix_eqb)
 
-          mod_afficher_fiche_station_server(
-            id = "afficher_fiche_stations",
-            stations = stations,
-            choix_station = fiche_demande,
-            choix_eqb = choix_eqb
-          )
-
 
           mod_chiffres_cles_station_server(
             id = "chiffres_cles",
             resumes_listes = resumes_listes,
             stations = stations,
             choix_station = choix_station,
+            choix_eqb = choix_eqb
+          )
+
+          mod_afficher_fiche_station_server(
+            id = "afficher_fiche_stations",
+            stations = stations,
+            choix_station = fiche_demande,
             choix_eqb = choix_eqb
           )
 
@@ -133,9 +131,12 @@ mod_synthese_station_server <- function(id, resumes_listes, stations, regie, ind
           } else {
 
             div(
+              mod_chiffres_cles_station_ui(id = ns("chiffres_cles")),
+
+              actionButton(ns("btn_afficher_fiche"), "Afficher fiche station"),
+              uiOutput(ns("loading_message")),
               mod_afficher_fiche_station_ui(id = ns("afficher_fiche_stations")),
 
-              mod_chiffres_cles_station_ui(id = ns("chiffres_cles")),
               tags$div(
                 class = "sub-tabpanel",
                 tabsetPanel(

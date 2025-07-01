@@ -11,7 +11,7 @@
 mod_chiffres_cles_station_ui <- function(id){
   ns <- NS(id)
   tagList(
-    # htmlOutput(ns("titre")),
+    htmlOutput(ns("titre")),
     # htmlOutput(ns("FicheStation")),
     tableOutput(ns("tableau"))
   )
@@ -52,14 +52,14 @@ mod_chiffres_cles_station_server <- function(id, resumes_listes, stations, choix
         resume_listes <- resumes_listes %>%
           filtrer_resumes(choix_station(), choix_eqb()) %>%
           dplyr::select(-code_station_hydrobio, -code_support)
-    #
-    #     output$titre <- renderUI({
-    #       with(
-    #         filtrer_station(stations, choix_station()),
-    #         HTML(paste0('<a href="', uri_station_hydrobio, '" target="_blank" title="Fiche station sandre"><b>',
-    #                     libelle_station_hydrobio, '</b></a>'))
-    #       )
-    #     })
+
+        output$titre <- renderUI({
+          with(
+            filtrer_station(stations, choix_station()),
+            HTML(paste0('<a href="', uri_station_hydrobio, '" target="_blank" title="Fiche station sandre"><b>',
+                        libelle_station_hydrobio, '</b></a>'))
+          )
+        })
     #
     #     print(paste0("fichie_trouve est : ",fichier_trouve))
         # output$FicheStation <-

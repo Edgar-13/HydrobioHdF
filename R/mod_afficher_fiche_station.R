@@ -11,7 +11,6 @@
 mod_afficher_fiche_station_ui <- function(id){
   ns <- NS(id)
   tagList(
-    htmlOutput(ns("titre")),
     htmlOutput(ns("FicheStationSN")),
     htmlOutput(ns("FicheStationAP"))
   )
@@ -102,15 +101,6 @@ mod_afficher_fiche_station_server <- function(id, stations, choix_station, choix
         repSN = repertoire_trouve,
         dossiersAP = dossiersAP,
         localisation = localisation
-      )
-    })
-
-    output$titre <- renderUI({
-      req(choix_station())
-      with(
-        filtrer_station(stations, choix_station()),
-        HTML(paste0('<a href="', uri_station_hydrobio, '" target="_blank" title="Fiche station sandre"><b>',
-                    libelle_station_hydrobio, '</b></a>'))
       )
     })
 

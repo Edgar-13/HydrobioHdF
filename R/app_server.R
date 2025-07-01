@@ -11,6 +11,9 @@ app_server <- function(input, output, session) {
   # "donnees_carte_taxons", "indices", "listes_taxo", "resumes_listes",
   # "stations", "acronymes_indices", "date_donnees"
   mod_load_data_server("donnees")
+
+  #load_data_hydrobio()
+
   library(sf)
 
   choix_departements <- mod_selecteur_server(id = "departements")

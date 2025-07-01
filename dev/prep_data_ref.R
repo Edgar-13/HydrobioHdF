@@ -1,6 +1,7 @@
 library(dplyr)
 library(sf)
 library(leaflet)
+library(sf)
 
 limites_bassin_utiles <- sf::st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydrobiologie/Donnees/Syntheses_et_valorisation/Outil_valorisation/AEAP_AESN/AEAP_AESN_utile.shp")%>%
   sf::st_transform(crs = 4326) %>%
@@ -42,10 +43,17 @@ edl <- sf::st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydr
   ) %>%
   rmapshaper::ms_simplify()
 
-usethis::use_data(
-  limites_bassin_utiles, limites_bassin_utiles_l,
-  limites_dep_utiles , limites_dep_utiles_l,
-  centroids, labels_df,
-  edl,
-  internal = TRUE, overwrite = TRUE
-)
+
+save(limites_bassin_utiles, limites_bassin_utiles_l,
+     limites_dep_utiles , limites_dep_utiles_l,
+     centroids, labels_df,edl,
+     file = "app/data_carte.rda")
+
+
+# usethis::use_data(
+#   limites_bassin_utiles, limites_bassin_utiles_l,
+#   limites_dep_utiles , limites_dep_utiles_l,
+#   centroids, labels_df,
+#   edl,
+#   internal = TRUE, overwrite = TRUE
+# )

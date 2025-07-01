@@ -131,6 +131,17 @@ mod_repartition_taxons_server <- function(id, listes, choix_stations, choix_eqbs
           weight = 1,
           options = leaflet::pathOptions(pane = "background")
         ) %>%
+        addWMSTiles(
+          baseUrl = "https://data.geopf.fr/private/wms-r?apikey=ign_scan_ws",
+          layers = "SCAN25TOUR_PYR-JPEG_WLD_WM",
+          options = WMSTileOptions(
+            version = "1.3.0",
+            format = "image/jpeg",
+            transparent = FALSE
+          ),
+          attribution = "IGN",
+          group = "SCAN25"
+        )%>%
         leaflet::addWMSTiles(
           baseUrl = "https://services.sandre.eaufrance.fr/geo/topage",
           layers = "CoursEau_FXX",
@@ -163,7 +174,7 @@ mod_repartition_taxons_server <- function(id, listes, choix_stations, choix_eqbs
         #   labelOptions = labelOptions(noHide = TRUE)
         #   ) %>%
         leaflet::addLayersControl(
-          baseGroups    = c("OSM","Orthophoto", "Scan Region", "Etat biologique"),
+          baseGroups    = c("OSM","SCAN25","Orthophoto", "Scan Region", "Etat biologique"),
           overlayGroups = c("Réseau hydrographique"),
           options       = leaflet::layersControlOptions(collapsed = TRUE)
         ) %>%

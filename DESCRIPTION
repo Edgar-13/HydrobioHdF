@@ -29,7 +29,8 @@ Imports:
     shinydashboard,
     stringr,
     tidyr,
-    tidyverse
+    tidyverse,
+    pkgload
 Suggests: 
     rmarkdown
 Encoding: UTF-8

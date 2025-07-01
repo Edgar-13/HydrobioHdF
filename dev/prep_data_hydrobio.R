@@ -18,11 +18,12 @@ date_donnees <- Sys.Date()
 
 # Définition des départements à traiter
 departements <- c('02','59','60','62','80','08','51','52','55','95','77') # Déartements dans lesquels il y a des stations suivies
+#departements <- c('08','51','52','55','95','77') # Déartements dans lesquels il y a des stations suivies
 departements_extra <- c("")  # Départements limitrophes avec stations en régie
 
 ## Creation d une liste code_stations qui contient le code station de toutes les stations dans la zone d'etude
 library(sf)
-points_qgis <- st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydrobiologie/Donnees/Syntheses_et_valorisation/Outil_valorisation/AEAP_AESN/StationsPerimetreUtile.shp")
+points_qgis <- st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydrobiologie/Donnees/Syntheses_et_valorisation/Outil_valorisation/AEAP_AESN/StationsTOUTES.shp")
 code_stations <- unique(points_qgis$code_stati)
 
 # Import des suivis en régie et de la typologie nationale
