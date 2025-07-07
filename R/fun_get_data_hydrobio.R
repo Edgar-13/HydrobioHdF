@@ -15,11 +15,10 @@
 #' stations <- telecharger_stations(c("75", "77", "78"), suivi_regie)
 #' }
 #'
-#' @importFrom dplyr select mutate
+#' @importFrom dplyr select mutate rename
 #' @importFrom hubeau get_hydrobio_stations_hydrobio
 #' @importFrom sf st_as_sf
 #'
-library(tidyverse)
 
 telecharger_stations <- function(code_departement, suivi_regie,code_stations) {
   hubeau::get_hydrobio_stations_hydrobio(

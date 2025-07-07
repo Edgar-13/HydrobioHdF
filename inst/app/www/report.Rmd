@@ -1,0 +1,15 @@
+---
+title: "Rapport de Suivi Hydrobiologique"
+output: pdf_document
+params:
+  carte: NA
+  tableau_stations: NA
+  tableau_station: NA
+---
+
+## Carte
+
+```{r, echo=FALSE, out.width='100%'}
+params$carte
+params$tableau_station
+```

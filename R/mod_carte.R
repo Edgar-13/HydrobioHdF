@@ -35,8 +35,7 @@ mod_carte_ui <- function(id, hauteur){
 
            .leaflet-touch .leaflet-control-layers .leaflet-control-zoom .leaflet-touch .leaflet-bar {
            z-index: 10000000000 !important;
-           }
-          "
+           }"
     )
   )
 
@@ -57,13 +56,15 @@ mod_carte_ui <- function(id, hauteur){
           multiple = FALSE
         )
       ),
-      leaflet::leafletOutput(
-        ns("carte_op"),
-        width = '100%',
-        height = hauteur
+      tags$div(
+        class = "ma-carte",
+        leaflet::leafletOutput(
+          ns("carte_op"),
+          width = '100%',
+          height = hauteur
+        )
       )
     )
-
   )
 }
 
@@ -289,10 +290,7 @@ mod_carte_server <- function(id, donnees_carte, choix_stations){
               lat2 = BboxMap[["ymax"]]
             )
         }
-
       })
-
-
     })
 
     SelectionPoint <- reactiveValues(clickedMarker=NULL)

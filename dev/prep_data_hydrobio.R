@@ -8,21 +8,24 @@
 
 # Installation des dépendances
 if (!require(pak)) install.packages("pak")
-pak::pkg_install(c("OFB-IdF/HydrobioIdF", "CedricMondy/SEEEapi"))
+pak::pkg_install(c("Edgar-13/HydrobioHdF", "CedricMondy/SEEEapi"))
+library(HydrobioHdF)
+# Charge fonctions utiles
+# source("R/fun_get_data_hydrobio.R")
 
 # Suppression du fichier de données s'il existe
-unlink("dev/data_hydrobio.rda")
+unlink("dev/data_hydrobioTEST.rda")
 
 # Date de mise à jour des données
 date_donnees <- Sys.Date()
 
 # Définition des départements à traiter
-departements <- c('02','59','60','62','80','08','51','52','55','95','77') # Déartements dans lesquels il y a des stations suivies
-#departements <- c('08','51','52','55','95','77') # Déartements dans lesquels il y a des stations suivies
+#departements <- c('02','59','60','62','80','08','51','52','55','95','77') # Déartements dans lesquels il y a des stations suivies
+departements <- c('80') # Déartements dans lesquels il y a des stations suivies
 departements_extra <- c("")  # Départements limitrophes avec stations en régie
 
-## Creation d une liste code_stations qui contient le code station de toutes les stations dans la zone d'etude
 library(sf)
+## Creation d une liste code_stations qui contient le code station de toutes les stations dans la zone d'etude
 points_qgis <- st_read("R:/ServicesRegionaux/Service_Connaissance/7-Laboratoire_hydrobiologie/Donnees/Syntheses_et_valorisation/Outil_valorisation/AEAP_AESN/StationsTOUTES.shp")
 code_stations <- unique(points_qgis$code_stati)
 
@@ -622,4 +625,4 @@ resumes_listes <- HydrobioIdF::resumer_listes(listes_taxo)
 save(date_donnees, regie, stations, indices, valeurs_seuils_stations, etat_bio,
      listes_taxo, resumes_listes, acronymes_indices, donnees_carte,
      donnees_carte_taxons, parametres_eqr,
-     file = "dev/data_hydrobio.rda")
+     file = "dev/data_hydrobioTEST.rda")

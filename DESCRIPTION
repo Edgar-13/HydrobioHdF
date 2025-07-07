@@ -30,7 +30,11 @@ Imports:
     stringr,
     tidyr,
     tidyverse,
-    pkgload
+    pkgload,
+    rmarkdown,
+    webshot2,
+    mapview,
+    DT
 Suggests: 
     rmarkdown
 Encoding: UTF-8

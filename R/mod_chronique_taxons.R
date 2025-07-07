@@ -28,9 +28,21 @@ mod_chronique_taxons_ui <- function(id){
            }")
   )
 
+  css_print <- HTML("
+    @media print {
+      .box-body {
+        overflow: visible !important;
+        max-height: none !important;
+        height: auto !important;
+      }
+    }
+  ")
+
+
     tagList(
       tags$head(
-        tags$style(css)
+        tags$style(css),
+        tags$style(css_print)
       ),
       uiOutput(ns("tabs"))
 

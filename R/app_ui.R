@@ -37,10 +37,13 @@ app_ui <- function(request) {
         # Your application UI logic
         fluidPage(
             div(
-                h1(
-                    class = "TitreAppli",
-                    "Suivis hydrobiologiques en Hauts-de-France"
+              div(
+                style = "display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 10;",                h1(
+                  class = "TitreAppli",
+                  "Suivis hydrobiologiques en Hauts-de-France"
                 ),
+                mod_export_print_ui("export_print")
+              ),
                 div(
                   div("Date d'accès aux données:"),
                   mod_load_data_ui("donnees"),
@@ -104,10 +107,12 @@ app_ui <- function(request) {
                       "Poissons" = 4
                     ),
                     choix_multiple = TRUE
-                  )
+                  ),
+                  div(class = "page-break")
+
                 ),
 
-                div(
+                div(class = "no-print",
                   style = "margin-bottom: 20px;",
                   mod_regie_ui(
                     id = "regie",
@@ -115,33 +120,37 @@ app_ui <- function(request) {
                   )
                 ),
 
-                div (
+                div (class = "no-print",
                   style = "margin-bottom: 20px;",
                   mod_selecteur_ordre_taxons_ui(id = "ordre_taxons")
                 )
               ),
+
               mainPanel = mainPanel(
                     width = 10,
                     tabsetPanel(
-                        tabPanel(
+                      tabPanel(
+
                             title = "Communautés",
                             fluidRow(
                               column(
                                 width = 6,
-                                  mod_carte_ui(
-                                  id = "carte",
-                                  hauteur = "500px"
-                                ),
+                                mod_carte_ui(id = "carte",hauteur = "500px"),
+                                div(class = "page-break"),
                                 mod_synthese_toutes_stations_ui(
                                   id = "bilan_stations"
-                                )
+                                ),
+                                div(class = "page-break")
+
                               ),
+
                               column(
                                 width = 6,
                                 mod_synthese_station_ui(id = "synthese_station")
                               )
                             )
                         ),
+
                         tabPanel(
                             title = "Taxons",
                             fluidRow(
@@ -149,6 +158,7 @@ app_ui <- function(request) {
                                 width = 6,
                                 mod_repartition_taxons_ui(id = "carte_taxons")
                               ),
+                              div(class = "page-break"),
                               column(
                                 width = 6,
                                 mod_synthese_taxon_ui(id = "synthese_taxon")

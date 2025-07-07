@@ -4,6 +4,9 @@
 #'     DO NOT REMOVE.
 #' @import shiny
 #' @noRd
+
+library(webshot2)
+
 app_server <- function(input, output, session) {
   # Your application server logic
 
@@ -70,4 +73,12 @@ app_server <- function(input, output, session) {
     repartition = repartition,
     choix_stations = choix_stations
   )
+
+  mod_export_print_server("export_print")
+
+  # observeEvent(input$print_trigger, {
+  #   leafletProxy("carte-carte_op")$invalidateSize()
+  #   leafletProxy("carte_taxons-carte_taxon")$invalidateSize()
+  # })
+
 }

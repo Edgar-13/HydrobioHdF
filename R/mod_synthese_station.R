@@ -132,11 +132,13 @@ mod_synthese_station_server <- function(id, resumes_listes, stations, regie, ind
 
             div(
               mod_chiffres_cles_station_ui(id = ns("chiffres_cles")),
+              div(class = "page-break"),
 
+              div(class = "no-print",
               actionButton(ns("btn_afficher_fiche"), "Afficher fiche station"),
               uiOutput(ns("loading_message")),
               mod_afficher_fiche_station_ui(id = ns("afficher_fiche_stations")),
-
+              ),
               tags$div(
                 class = "sub-tabpanel",
                 tabsetPanel(
@@ -148,7 +150,7 @@ mod_synthese_station_server <- function(id, resumes_listes, stations, regie, ind
                     title = "Taxons",
                     mod_chronique_taxons_ui(id = ns("chronique_taxons"))
                   )
-                )
+                ),
               )
             )
           }

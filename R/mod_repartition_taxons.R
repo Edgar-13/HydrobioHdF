@@ -61,12 +61,14 @@ mod_repartition_taxons_ui <- function(id){
           multiple = FALSE
         )
       ),
-      leaflet::leafletOutput(
+      tags$div(
+        class = "ma-carte",
+        leaflet::leafletOutput(
         ns("carte_taxon"),
         width = '100%'
       )
+      )
     )
-
   )
 }
 
