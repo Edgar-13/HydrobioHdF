@@ -209,7 +209,7 @@ telecharger_listes <- function(code_departement, code_eqb = c(`Poissons` = 4, `D
 #' suivi_regie <- importer_suivis_regie("chemin/vers/fichier.xlsx")
 #' }
 #'
-#' @importFrom dplyr mutate filter select case_when bind_rows rename
+#' @importFrom dplyr mutate filter select case_when bind_rows rename recode
 #' @importFrom janitor clean_names
 #' @importFrom openxlsx2 read_xlsx
 #' @importFrom purrr map_dfr
